@@ -1,0 +1,28 @@
+.userCard {
+  max-width: 200px;
+}
+
+.userCard__img {
+  width: 90%;
+  margin: auto;
+}
+
+ul {
+  overflow: hidden;
+  white-space: nowrap;
+}
+li {
+  display: inline-block;
+}
+
+.search {
+  float: right;
+  margin: 10px;
+  display: inline-block;
+}
+
+.leftButtonGroup {
+  margin: 10px;
+  display: inline-block;
+  width: 50%;
+}
