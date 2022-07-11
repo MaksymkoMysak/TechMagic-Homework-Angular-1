@@ -34,25 +34,62 @@
     Search
   </button>
 </div>
-<ul>
-  <li *ngFor="let user of users">
+<form [formGroup]="newUserForm" (ngSubmit)="onSubmit()" class="registerForm">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div fxFlex="100%" class="registerForm__form-field__input">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" name="firstName" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%" class="registerForm__form-field__input">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" name="lastName" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%" class="registerForm__form-field__input">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" name="email" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%" class="registerForm__form-field__input">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phone" name="phone" type="text" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%" class="registerForm__form-field__input">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="id" name="id" type="number" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="100%">
+      <button
+        mat-stroked-button
+        color="primary"
+        type="submit"
+        [disabled]="!newUserForm.valid"
+      >
+        Register<mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</form>
+<div class="wrapper">
+  <div class="wrapper__element" *ngFor="let user of users">
     <mat-card class="userCard">
       <mat-checkbox
         [(ngModel)]="user.checked"
         (ngModelChange)="updateAllComplete()"
       ></mat-checkbox>
-
-      <img
-        class="userCard__img"
-        mat-card-image
-        src="{{ user.imgURL }}"
-        alt="User image"
-      />
       <mat-card-content>
         <p>{{ user.name }}</p>
         <p>{{ user.email }}</p>
-        <p>{{ user.phoneNumber }}</p>
+        <p>{{ user.phone }}</p>
       </mat-card-content>
     </mat-card>
-  </li>
-</ul>
+  </div>
+</div>

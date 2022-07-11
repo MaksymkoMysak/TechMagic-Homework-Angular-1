@@ -1,17 +1,30 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { USERS } from './mock-users';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   getUsers(): Observable<User[]> {
-    const users = of(USERS);
-    return users;
+    return this.http.get<User[]>("https://jsonplaceholder.typicode.com/users")
+    .pipe(
+      map((users: any) => {
+        return users.map((user: any) => { 
+          return {
+            name: user.name, 
+            email: user.email,
+            phone: user.phone,
+            id: user.id,
+            checked: false 
+          }
+        })
+      })
+    );
   }
 
 }

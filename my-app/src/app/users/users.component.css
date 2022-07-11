@@ -7,12 +7,15 @@
   margin: auto;
 }
 
-ul {
-  overflow: hidden;
-  white-space: nowrap;
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  margin: 30px;
 }
-li {
-  display: inline-block;
+
+.registerForm {
+  margin: 30px;
 }
 
 .search {
@@ -25,4 +28,11 @@ li {
   margin: 10px;
   display: inline-block;
   width: 50%;
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 50px;
 }
